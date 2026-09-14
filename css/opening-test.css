@@ -1,0 +1,389 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #f3f0e9;
+
+  font-family:
+    "Noto Serif KR",
+    serif;
+}
+
+
+/* 테스트용 실제 청첩장 */
+
+.test-main {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  background: #fbfaf7;
+
+  text-align: center;
+}
+
+.test-main img {
+  width: 100%;
+
+  display: block;
+}
+
+.test-main-text {
+  padding: 50px 20px;
+}
+
+.test-main-text p {
+  margin-bottom: 15px;
+
+  font-family: Georgia, serif;
+
+  font-size: 9px;
+  letter-spacing: 4px;
+
+  color: #9a776c;
+}
+
+.test-main-text h2 {
+  margin-bottom: 15px;
+
+  font-size: 22px;
+  font-weight: 400;
+
+  color: #3f3935;
+}
+
+.test-main-text span {
+  font-family: Georgia, serif;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+
+  color: #766d68;
+}
+
+
+/* =========================================
+   OPENING
+========================================= */
+
+.opening {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  width: 100%;
+  height: 100dvh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(180deg,
+      #fbfaf7,
+      #f7f1e9);
+
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+
+/* 글씨 */
+
+.opening-content {
+  position: absolute;
+
+  top: 31%;
+
+  width: 100%;
+
+  text-align: center;
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.9s ease;
+}
+
+.opening-eng {
+  margin-bottom: 17px;
+
+  font-family: Georgia, serif;
+
+  font-size: 9px;
+  letter-spacing: 4px;
+
+  color: #9a776c;
+}
+
+.opening-names {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  font-size: 23px;
+  font-weight: 400;
+
+  color: #403936;
+}
+
+.opening-names span {
+  font-family: Georgia, serif;
+
+  font-size: 16px;
+  font-style: italic;
+
+  color: #b5383e;
+}
+
+.opening-date {
+  margin-top: 17px;
+
+  font-family: Georgia, serif;
+
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  color: #746b66;
+}
+
+
+/* =========================================
+   RIBBON
+========================================= */
+
+.ribbon {
+  position: absolute;
+
+  top: 54%;
+  left: 0;
+
+  width: 100%;
+  height: 60px;
+}
+
+.ribbon-left,
+.ribbon-right {
+  position: absolute;
+
+  top: 21px;
+
+  width: 55%;
+  height: 18px;
+
+  background:
+    linear-gradient(180deg,
+      #b84a4f,
+      #8f3035);
+
+  transition:
+    transform 1s cubic-bezier(.65, 0, .35, 1),
+    opacity 0.8s ease;
+
+  pointer-events: none;
+}
+
+.ribbon-left {
+  right: 50%;
+}
+
+.ribbon-right {
+  left: 50%;
+}
+
+
+/* 봉인 */
+
+.seal {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border:
+    1px solid rgba(97, 29, 32, 0.45);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at 35% 30%,
+      #c3585b,
+      #913337 72%);
+
+  color: #f7ead7;
+
+  font-family:
+    "Noto Serif KR",
+    serif;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  touch-action: manipulation;
+
+  animation:
+    sealBreath 2.2s ease-in-out infinite;
+
+  transition:
+    transform 0.7s ease,
+    opacity 0.5s ease;
+}
+
+
+/* 열기 버튼 */
+
+.open-button {
+  position: absolute;
+
+  bottom: max(48px,
+      env(safe-area-inset-bottom));
+
+  border: 0;
+
+  background: transparent;
+
+  font-family:
+    "Noto Serif KR",
+    serif;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  color: #95655e;
+
+  cursor: pointer;
+
+  touch-action: manipulation;
+
+  transition:
+    opacity 0.5s ease;
+}
+
+.open-button span {
+  display: block;
+
+  margin-top: 8px;
+
+  animation:
+    arrowMove 1.5s ease-in-out infinite;
+}
+
+
+/* =========================================
+   OPEN
+========================================= */
+
+.opening.is-open .ribbon-left {
+
+  transform:
+    translateX(-115%) rotate(-5deg);
+
+  opacity: 0;
+}
+
+.opening.is-open .ribbon-right {
+
+  transform:
+    translateX(115%) rotate(5deg);
+
+  opacity: 0;
+}
+
+.opening.is-open .seal {
+
+  animation: none;
+
+  transform:
+    translate(-50%, -50%) rotate(90deg) scale(0);
+
+  opacity: 0;
+}
+
+.opening.is-open .opening-content {
+
+  transform:
+    translateY(-20px);
+
+  opacity: 0;
+}
+
+.opening.is-open .open-button {
+
+  opacity: 0;
+}
+
+
+/* 완전히 제거 */
+
+.opening.is-finished {
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes sealBreath {
+
+  0%,
+  100% {
+
+    transform:
+      translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+
+    transform:
+      translate(-50%, -50%) scale(1.06);
+  }
+
+}
+
+
+@keyframes arrowMove {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+}

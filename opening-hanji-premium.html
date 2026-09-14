@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>승택 ♥ 소미 | Premium Wood Door Opening</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Noto+Serif+KR:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f7f1e8;
+      --paper-light: #fcf9f3;
+      --ink: #3d3733;
+
+      --wood-1: #5f493d;
+      --wood-2: #49362f;
+      --wood-3: #72584a;
+      --wood-4: #3b2d28;
+
+      --wine: #91353a;
+
+      --brass: #aa9067;
+      --brass-light: #d6c49d;
+      --brass-dark: #7f6748;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #111;
+    }
+
+    body {
+      font-family: "Noto Serif KR", serif;
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* =========================================================
+       실제 청첩장 테스트 영역
+    ========================================================= */
+
+    /* .preview {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: #fbfaf7;
+      text-align: center;
+    }
+
+    .preview img {
+      width: 100%;
+      display: block;
+    }
+
+    .preview-copy {
+      padding: 48px 20px 72px;
+    }
+
+    .preview-copy p {
+      margin-bottom: 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: #9a766f;
+    }
+
+    .preview-copy h2 {
+      font-size: 22px;
+      font-weight: 400;
+    } */
+
+    /* =========================================================
+       OPENING
+    ========================================================= */
+
+    .opening {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 50% 32%, rgba(255, 255, 255, .05), transparent 35%),
+        #151211;
+
+      transition:
+        opacity .9s ease,
+        visibility .9s ease;
+    }
+
+    .stage {
+      position: relative;
+
+      width: min(480px, 100vw);
+      height: 100vh;
+      height: 100dvh;
+
+      overflow: hidden;
+
+      perspective: 1700px;
+      perspective-origin: 50% 50%;
+
+      background: #111;
+
+      box-shadow:
+        0 0 90px rgba(0, 0, 0, .28);
+    }
+
+    /* =========================================================
+       문 뒤 웨딩사진
+    ========================================================= */
+
+    .reveal {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .reveal img {
+      position: absolute;
+      inset: -2%;
+
+      width: 104%;
+      height: 104%;
+
+      object-fit: cover;
+      object-position: center;
+
+      transform: scale(1.08);
+
+      filter:
+        saturate(.84) contrast(.97) brightness(.83);
+
+      transition:
+        transform 5s cubic-bezier(.18, .7, .25, 1),
+        filter 1.5s ease;
+    }
+
+    .reveal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(180deg,
+          rgba(12, 10, 9, .43) 0%,
+          rgba(12, 10, 9, .06) 38%,
+          rgba(12, 10, 9, .13) 61%,
+          rgba(12, 10, 9, .58) 100%);
+    }
+
+    .reveal-copy {
+      position: absolute;
+      left: 0;
+      bottom: 10%;
+      z-index: 4;
+
+      width: 100%;
+      padding: 0 28px;
+
+      text-align: center;
+      color: white;
+
+      opacity: 0;
+      transform: translateY(14px);
+
+      transition:
+        opacity 1s 1.05s ease,
+        transform 1.05s 1.05s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal-kicker {
+      margin-bottom: 16px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 10px;
+      letter-spacing: 4.5px;
+
+      color: rgba(255, 255, 255, .82);
+    }
+
+    .reveal-copy h1 {
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: 1.3px;
+    }
+
+    .reveal-copy h1 em {
+      margin: 0 9px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: #dfb4b0;
+    }
+
+    .reveal-date {
+      margin-top: 17px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      letter-spacing: 3.5px;
+
+      color: rgba(255, 255, 255, .8);
+    }
+
+    /* =========================================================
+       문틈의 금빛
+    ========================================================= */
+
+    .door-light {
+      position: absolute;
+      left: 50%;
+      top: 5%;
+      z-index: 3;
+
+      width: 2px;
+      height: 90%;
+
+      transform:
+        translateX(-50%) scaleY(.03);
+
+      transform-origin: center;
+
+      opacity: 0;
+
+      background:
+        linear-gradient(to bottom,
+          rgba(255, 241, 201, .98) 0%,
+          rgba(255, 228, 160, .94) 57%,
+          rgba(255, 218, 137, .54) 74%,
+          rgba(255, 218, 137, 0) 90%);
+
+      box-shadow:
+        0 0 11px rgba(255, 231, 170, .96),
+        0 0 34px rgba(255, 216, 133, .72),
+        0 0 82px rgba(255, 204, 102, .34);
+
+      transition:
+        transform .65s ease,
+        opacity .35s ease;
+    }
+
+    /* =========================================================
+       문 자체
+    ========================================================= */
+
+    .door {
+      position: absolute;
+      top: 0;
+      z-index: 5;
+
+      width: 50.15%;
+      height: 100%;
+
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      will-change: transform;
+
+      /*
+        한지 패널 + 은은한 종이 결
+      */
+      background:
+        repeating-linear-gradient(0deg,
+          rgba(116, 90, 69, .018) 0,
+          rgba(116, 90, 69, .018) 1px,
+          transparent 1px,
+          transparent 5px),
+        linear-gradient(90deg,
+          #f2eadf 0%,
+          #fcf8f0 52%,
+          #ede2d5 100%);
+
+      box-shadow:
+        inset 0 0 55px rgba(66, 46, 37, .07);
+
+      transition:
+        transform 1.95s cubic-bezier(.72, 0, .2, 1),
+        box-shadow 1.55s ease,
+        filter 1.4s ease;
+    }
+
+    .door-left {
+      left: 0;
+      transform-origin: left center;
+    }
+
+    .door-right {
+      right: 0;
+      transform-origin: right center;
+    }
+
+    /*
+      바깥 나무 프레임
+    */
+
+    .wood-frame {
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      box-shadow:
+        inset 0 0 0 11px rgba(73, 54, 45, .96),
+        inset 0 0 0 13px rgba(126, 96, 77, .55),
+        inset 0 0 0 15px rgba(53, 39, 34, .36);
+    }
+
+    /*
+      나무결
+    */
+
+    .wood-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      opacity: .72;
+
+      background:
+        repeating-linear-gradient(92deg,
+          transparent 0 8px,
+          rgba(255, 255, 255, .025) 8px 9px,
+          transparent 9px 17px,
+          rgba(0, 0, 0, .05) 17px 18px),
+        repeating-linear-gradient(2deg,
+          rgba(0, 0, 0, .025) 0 1px,
+          transparent 1px 7px);
+
+      mix-blend-mode: multiply;
+    }
+
+    /*
+      나무 안쪽 프레임
+    */
+
+    .inner-frame {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      top: 7.5%;
+      bottom: 7.5%;
+
+      border:
+        7px solid var(--wood-1);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .08),
+        0 0 0 1px rgba(48, 34, 29, .22),
+        0 4px 12px rgba(54, 38, 31, .08);
+
+      pointer-events: none;
+    }
+
+    /*
+      나무 가로살
+    */
+
+    .inner-frame::before,
+    .inner-frame::after {
+      content: "";
+      position: absolute;
+      left: -7px;
+      right: -7px;
+
+      height: 6px;
+
+      background:
+        linear-gradient(180deg,
+          var(--wood-3),
+          var(--wood-1) 55%,
+          var(--wood-2));
+
+      box-shadow:
+        inset 0 1px rgba(255, 255, 255, .08),
+        0 1px 2px rgba(49, 35, 30, .18);
+    }
+
+    .inner-frame::before {
+      top: 32%;
+    }
+
+    .inner-frame::after {
+      bottom: 32%;
+    }
+
+    /*
+      세로살 - 너무 촘촘하지 않게
+    */
+
+    .lattice {
+      position: absolute;
+      left: 50%;
+      top: 7.5%;
+      bottom: 7.5%;
+
+      width: 5px;
+
+      transform: translateX(-50%);
+
+      background:
+        linear-gradient(90deg,
+          var(--wood-2),
+          var(--wood-3) 48%,
+          var(--wood-2));
+
+      box-shadow:
+        inset 1px 0 rgba(255, 255, 255, .07),
+        1px 0 2px rgba(50, 35, 30, .15);
+
+      pointer-events: none;
+    }
+
+    /*
+      중앙쪽 굵은 문설주
+    */
+
+    .door-edge {
+      position: absolute;
+      top: 0;
+
+      width: 13px;
+      height: 100%;
+
+      background:
+        linear-gradient(90deg,
+          #392c27 0%,
+          #675047 35%,
+          #795d4e 52%,
+          #47362f 100%);
+
+      box-shadow:
+        0 0 7px rgba(0, 0, 0, .22),
+        inset 1px 0 rgba(255, 255, 255, .06);
+    }
+
+    .door-left .door-edge {
+      right: 0;
+    }
+
+    .door-right .door-edge {
+      left: 0;
+    }
+
+    /*
+      문 바깥 경첩 느낌
+    */
+
+    .hinge {
+      position: absolute;
+      top: 22%;
+
+      width: 8px;
+      height: 55px;
+
+      border-radius: 8px;
+
+      background:
+        linear-gradient(90deg,
+          #594436,
+          #927454 45%,
+          #574331);
+
+      box-shadow:
+        0 3px 6px rgba(37, 28, 23, .2);
+    }
+
+    .hinge::after {
+      content: "";
+      position: absolute;
+      left: 1px;
+      bottom: -180px;
+
+      width: 6px;
+      height: 48px;
+
+      border-radius: 8px;
+
+      background: inherit;
+    }
+
+    .door-left .hinge {
+      left: 8px;
+    }
+
+    .door-right .hinge {
+      right: 8px;
+    }
+
+    /* =========================================================
+       황동 문고리
+    ========================================================= */
+
+    .door-handle {
+      position: absolute;
+      top: 50%;
+
+      width: 40px;
+      height: 40px;
+
+      transform: translateY(-50%);
+
+      border:
+        2px solid var(--brass);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle,
+          transparent 51%,
+          rgba(187, 158, 112, .13) 53%,
+          transparent 62%);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .24),
+        0 3px 7px rgba(60, 43, 32, .16);
+
+      pointer-events: none;
+    }
+
+    .door-left .door-handle {
+      right: 22px;
+    }
+
+    .door-right .door-handle {
+      left: 22px;
+    }
+
+    .door-handle::before {
+      content: "";
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      width: 8px;
+      height: 8px;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle at 35% 30%,
+          var(--brass-light),
+          var(--brass) 65%,
+          var(--brass-dark) 100%);
+    }
+
+    /* =========================================================
+       중앙 매듭 버튼
+    ========================================================= */
+
+    .open-button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 9;
+
+      width: 70px;
+      height: 70px;
+
+      transform:
+        translate(-50%, -50%);
+
+      border: 0;
+      background: transparent;
+
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+
+      transition:
+        opacity .45s ease,
+        transform .6s ease;
+    }
+
+    .knot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      width: 44px;
+      height: 44px;
+
+      transform:
+        translate(-50%, -50%) rotate(45deg);
+
+      display: grid;
+      place-items: center;
+
+      border:
+        1px solid rgba(102, 28, 33, .4);
+
+      background:
+        linear-gradient(145deg,
+          #aa4247,
+          #843036);
+
+      box-shadow:
+        0 5px 12px rgba(76, 26, 29, .19);
+    }
+
+    .knot span {
+      transform: rotate(-45deg);
+
+      font-size: 9px;
+      letter-spacing: 1px;
+
+      color: #f3e2ca;
+    }
+
+    .open-button::before,
+    .open-button::after {
+      content: "";
+
+      position: absolute;
+      top: 50%;
+
+      width: 24px;
+      height: 1px;
+
+      background: rgba(145, 53, 58, .72);
+    }
+
+    .open-button::before {
+      left: -9px;
+    }
+
+    .open-button::after {
+      right: -9px;
+    }
+
+    /* =========================================================
+       텍스트
+    ========================================================= */
+
+    .top-copy {
+      position: absolute;
+      left: 0;
+      top: max(43px, env(safe-area-inset-top));
+      z-index: 8;
+
+      width: 100%;
+
+      text-align: center;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 9px;
+      letter-spacing: 4.6px;
+
+      color: rgba(74, 55, 47, .82);
+
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, .45);
+
+      transition:
+        opacity .45s ease,
+        transform .55s ease;
+    }
+
+    .bottom-copy {
+      position: absolute;
+      left: 0;
+      bottom: max(48px, env(safe-area-inset-bottom));
+      z-index: 8;
+
+      width: 100%;
+
+      text-align: center;
+
+      transition:
+        opacity .45s ease,
+        transform .55s ease;
+    }
+
+    .promise {
+      font-size: 11px;
+      letter-spacing: 6px;
+
+      color: #4a352e;
+
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, .72),
+        0 0 8px rgba(247, 239, 228, .86);
+    }
+
+    .guide {
+      margin-top: 13px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+
+      color: #6c4d42;
+    }
+
+
+    /* =========================================================
+       문이 열리기 전 이름
+    ========================================================= */
+
+    .closed-names {
+      position: absolute;
+      left: 50%;
+      top: 36.5%;
+      z-index: 8;
+
+      transform: translateX(-50%);
+
+      width: 100%;
+      padding: 0 24px;
+
+      text-align: center;
+
+      color: #46322c;
+
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, .72),
+        0 0 10px rgba(248, 241, 231, .9);
+
+      transition:
+        opacity .5s ease,
+        transform .65s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .closed-names .small {
+      margin-bottom: 12px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+
+      color: #735247;
+    }
+
+    .closed-names h1 {
+      margin: 0;
+
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+    }
+
+    .closed-names h1 em {
+      margin: 0 8px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+
+      color: var(--wine);
+    }
+
+    .closed-names .date {
+      margin-top: 11px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+
+      color: #735247;
+    }
+
+    /* =========================================================
+       OPEN
+    ========================================================= */
+
+
+    .opening.is-opening .closed-names {
+      opacity: 0;
+
+      transform:
+        translateX(-50%) translateY(-10px);
+    }
+
+    .opening.is-opening .door-light {
+      opacity: 1;
+
+      transform:
+        translateX(-50%) scaleY(1);
+    }
+
+    .opening.is-opening .door-left {
+      transform:
+        rotateY(-104deg);
+
+      box-shadow:
+        28px 0 50px rgba(0, 0, 0, .32);
+
+      filter:
+        brightness(.78) saturate(.9);
+    }
+
+    .opening.is-opening .door-right {
+      transform:
+        rotateY(104deg);
+
+      box-shadow:
+        -28px 0 50px rgba(0, 0, 0, .32);
+
+      filter:
+        brightness(.78) saturate(.9);
+    }
+
+    .opening.is-opening .open-button {
+      transform:
+        translate(-50%, -50%) scale(.55) rotate(20deg);
+
+      opacity: 0;
+    }
+
+    .opening.is-opening .top-copy {
+      transform:
+        translateY(-7px);
+
+      opacity: 0;
+    }
+
+    .opening.is-opening .bottom-copy {
+      transform:
+        translateY(8px);
+
+      opacity: 0;
+    }
+
+    .opening.is-opening .reveal img {
+      transform:
+        scale(1.015);
+
+      filter:
+        saturate(.9) contrast(.98) brightness(.96);
+    }
+
+    .opening.is-opening .reveal-copy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .opening.is-finished {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    @media (max-width: 380px) {
+      .inner-frame {
+        left: 22px;
+        right: 22px;
+      }
+
+      .reveal-copy h1 {
+        font-size: 23px;
+      }
+
+      .door-left .door-handle {
+        right: 18px;
+      }
+
+      .door-right .door-handle {
+        left: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .door,
+      .reveal img,
+      .reveal-copy,
+      .door-light {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="opening" id="opening">
+
+    <div class="stage">
+
+      <div class="reveal">
+
+        <img src="./images/SON_3317.jpg" alt="승택과 소미 웨딩사진">
+
+        <div class="reveal-copy">
+
+          <p class="reveal-kicker">
+            A BEAUTIFUL JOURNEY
+          </p>
+
+          <h1>
+            임승택
+            <em>&amp;</em>
+            김소미
+          </h1>
+
+          <p class="reveal-date">
+            19 · DECEMBER · 2026
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="door-light"></div>
+
+
+      <!-- LEFT DOOR -->
+      <div class="door door-left">
+
+        <div class="wood-frame"></div>
+
+        <div class="inner-frame"></div>
+
+        <div class="lattice"></div>
+
+        <div class="door-edge"></div>
+
+        <span class="hinge"></span>
+
+        <span class="door-handle"></span>
+
+      </div>
+
+
+      <!-- RIGHT DOOR -->
+      <div class="door door-right">
+
+        <div class="wood-frame"></div>
+
+        <div class="inner-frame"></div>
+
+        <div class="lattice"></div>
+
+        <div class="door-edge"></div>
+
+        <span class="hinge"></span>
+
+        <span class="door-handle"></span>
+
+      </div>
+
+
+      <p class="top-copy">
+        WEDDING INVITATION
+      </p>
+
+
+      <div class="closed-names">
+
+        <p class="small">
+          TOGETHER, ALWAYS
+        </p>
+
+        <h1>
+          임승택
+          <em>&amp;</em>
+          김소미
+        </h1>
+
+        <p class="date">
+          2026 · 12 · 19
+        </p>
+
+      </div>
+
+
+      <button type="button" class="open-button" id="doorButton" aria-label="청첩장 문 열기">
+
+        <span class="knot">
+          <span>結</span>
+        </span>
+
+      </button>
+
+
+      <div class="bottom-copy">
+
+        <p class="promise">
+          百年佳約
+        </p>
+
+        <p class="guide">
+          문을 열어주세요
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <main class="preview">
+
+    <img src="./images/SON_3317.jpg" alt="승택과 소미 웨딩사진">
+
+    <div class="preview-copy">
+      <p>OUR WEDDING DAY</p>
+      <h2>임승택 &amp; 김소미</h2>
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const opening =
+      document.getElementById("opening");
+
+    const doorButton =
+      document.getElementById("doorButton");
+
+    let started = false;
+
+
+    function openDoor() {
+
+      if (!opening || started) return;
+
+      started = true;
+
+      opening.classList.add(
+        "is-opening"
+      );
+
+
+      setTimeout(() => {
+
+        opening.classList.add(
+          "is-finished"
+        );
+
+      }, 3600);
+
+
+      setTimeout(() => {
+
+        opening.remove();
+
+      }, 4550);
+
+    }
+
+
+    doorButton?.addEventListener(
+      "click",
+      openDoor
+    );
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>승택 ♥ 소미 | Wedding Film Opening</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Noto+Serif+KR:wght@300;400&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --ink: #3f3935;
+      --wine-soft: #d7a5a4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #111;
+    }
+
+    body {
+      font-family: "Noto Serif KR", serif;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .preview {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--paper);
+      text-align: center;
+    }
+
+    .preview img {
+      width: 100%;
+      display: block;
+    }
+
+    .preview-copy {
+      padding: 48px 20px 70px;
+      color: var(--ink);
+    }
+
+    .preview-copy p {
+      margin-bottom: 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: #9a766f;
+    }
+
+    .preview-copy h2 {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    /* =========================
+       WEDDING FILM
+    ========================== */
+
+    .opening {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: #0d0c0c;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .film-photo {
+      position: absolute;
+      inset: -2%;
+      width: 104%;
+      height: 104%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      filter: saturate(.82) contrast(.96) brightness(.86);
+      transform: scale(1.09);
+      animation:
+        photoFade 1.5s .15s ease forwards,
+        filmMove 8s .15s cubic-bezier(.18, .7, .25, 1) forwards;
+    }
+
+    .opening::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg,
+          rgba(8, 7, 7, .48) 0%,
+          rgba(8, 7, 7, .08) 35%,
+          rgba(8, 7, 7, .12) 57%,
+          rgba(8, 7, 7, .64) 100%);
+      pointer-events: none;
+    }
+
+    .opening::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: .13;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 30%, white 0 .5px, transparent .7px),
+        radial-gradient(circle at 70% 65%, white 0 .45px, transparent .65px),
+        radial-gradient(circle at 45% 80%, white 0 .45px, transparent .65px);
+      background-size: 19px 23px, 27px 31px, 37px 41px;
+      mix-blend-mode: soft-light;
+    }
+
+    .film-top {
+      position: absolute;
+      top: max(34px, env(safe-area-inset-top));
+      left: 0;
+      z-index: 3;
+      width: 100%;
+      padding: 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, .72);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      opacity: 0;
+      animation: titleFade .9s .5s ease forwards;
+    }
+
+    .film-content {
+      position: absolute;
+      left: 0;
+      bottom: 11%;
+      z-index: 3;
+      width: 100%;
+      padding: 0 30px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .kicker,
+    .film-names,
+    .film-date,
+    .film-place,
+    .film-open {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: titleUp .95s ease forwards;
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      animation-delay: .65s;
+    }
+
+    .film-names {
+      font-size: 27px;
+      font-weight: 400;
+      letter-spacing: 1.6px;
+      animation-delay: .9s;
+    }
+
+    .film-names em {
+      margin: 0 9px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 21px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--wine-soft);
+    }
+
+    .film-date {
+      margin-top: 18px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      animation-delay: 1.15s;
+    }
+
+    .film-place {
+      margin-top: 8px;
+      font-family: "Cormorant Garamond", "Noto Serif KR", serif;
+      font-size: 10px;
+      letter-spacing: 2.3px;
+      color: rgba(255, 255, 255, .76);
+      animation-delay: 1.35s;
+    }
+
+    .film-open {
+      position: relative;
+      display: inline-block;
+      margin-top: 38px;
+      padding: 10px 0 8px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 11px;
+      letter-spacing: 3.3px;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      animation-delay: 1.65s;
+    }
+
+    .film-open::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 70px;
+      height: 1px;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, .68);
+      transition: width .35s ease, opacity .35s ease;
+    }
+
+    .film-open:active::after {
+      width: 42px;
+      opacity: .6;
+    }
+
+
+    /* =========================================================
+       PREMIUM FILM ENDING
+       버튼을 누른 뒤 바로 사라지지 않고
+       짧은 엔딩 타이틀 → 자연스러운 크로스페이드
+    ========================================================= */
+
+    .film-ending {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      z-index: 4;
+
+      width: 100%;
+      padding: 0 30px;
+
+      transform:
+        translateY(-50%) translateY(10px);
+
+      text-align: center;
+      color: #fff;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition:
+        opacity .72s ease,
+        transform .9s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .film-ending-line {
+      display: block;
+
+      width: 0;
+      height: 1px;
+
+      margin: 0 auto 17px;
+
+      background:
+        linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, .9) 22%,
+          rgba(255, 255, 255, .9) 78%,
+          transparent);
+
+      transition:
+        width .9s .22s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .film-ending-eng {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 4.8px;
+
+      color: rgba(255, 255, 255, .94);
+    }
+
+    .film-ending-kor {
+      margin-top: 11px;
+
+      font-family: "Noto Serif KR", serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 2px;
+
+      color: rgba(255, 255, 255, .72);
+    }
+
+    /*
+      아주 은은한 따뜻한 빛.
+      플래시처럼 번쩍이지 않고 사진에 온기가 도는 정도.
+    */
+
+    .film-bloom {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+
+      opacity: 0;
+      pointer-events: none;
+
+      background:
+        radial-gradient(circle at 50% 48%,
+          rgba(255, 244, 224, .24) 0%,
+          rgba(255, 236, 209, .10) 25%,
+          transparent 58%);
+
+      transition:
+        opacity 1.1s ease;
+    }
+
+    /*
+      실제 청첩장으로 넘어갈 때
+      하단에서 아주 옅은 아이보리 빛이 올라오며
+      갑자기 화면이 끊기는 느낌을 없애준다.
+    */
+
+    .film-paper-fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -20%;
+      z-index: 5;
+
+      height: 58%;
+
+      opacity: 0;
+      pointer-events: none;
+
+      background:
+        linear-gradient(to top,
+          rgba(251, 250, 247, .92) 0%,
+          rgba(251, 250, 247, .60) 34%,
+          rgba(251, 250, 247, .16) 70%,
+          transparent 100%);
+
+      transform: translateY(24%);
+
+      transition:
+        opacity .95s ease,
+        transform 1.1s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .opening.is-opening .film-ending {
+      opacity: 1;
+
+      transform:
+        translateY(-50%) translateY(0);
+    }
+
+    .opening.is-opening .film-ending-line {
+      width: 58px;
+    }
+
+    .opening.is-opening .film-bloom {
+      opacity: 1;
+    }
+
+    /*
+      2단계: 엔딩 문구를 보여준 뒤
+      청첩장 쪽으로 부드럽게 빠져나간다.
+    */
+
+    .opening.is-closing .film-ending {
+      opacity: 0;
+
+      transform:
+        translateY(-50%) translateY(-8px);
+    }
+
+    .opening.is-closing .film-paper-fade {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    .opening.is-opening .film-content,
+    .opening.is-opening .film-top {
+      animation: none;
+      transition: opacity .6s ease, transform .7s ease;
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .opening.is-opening .film-photo {
+      animation: none;
+
+      opacity: .94;
+
+      transform:
+        scale(1.005) translate3d(0, -0.4%, 0);
+
+      transition:
+        transform 2.25s cubic-bezier(.22, 1, .36, 1),
+        opacity 1.2s ease,
+        filter 1.4s ease;
+
+      filter:
+        saturate(.90) contrast(.98) brightness(.98);
+    }
+
+    .opening.is-closing .film-photo {
+      transform:
+        scale(1) translate3d(0, 0, 0);
+
+      filter:
+        saturate(.94) contrast(.99) brightness(1);
+    }
+
+    .opening.is-finished {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transition:
+        opacity 1.05s ease,
+        visibility 1.05s ease;
+    }
+
+    @keyframes photoFade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: .86;
+      }
+    }
+
+    @keyframes filmMove {
+      from {
+        transform: scale(1.09) translate3d(0, 0, 0);
+      }
+
+      to {
+        transform: scale(1.015) translate3d(0, -1%, 0);
+      }
+    }
+
+    @keyframes titleFade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes titleUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .film-names {
+        font-size: 24px;
+      }
+
+      .film-content {
+        bottom: 9%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .film-photo,
+      .kicker,
+      .film-names,
+      .film-date,
+      .film-place,
+      .film-open,
+      .film-top {
+        animation-duration: .01ms !important;
+        animation-delay: 0s !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="opening" id="opening">
+    <img class="film-photo" src="./images/SON_3317.jpg" alt="승택과 소미 웨딩사진">
+
+    <div class="film-top">
+      <span>WEDDING FILM</span>
+      <span>ST · SM</span>
+    </div>
+
+    <div class="film-content">
+      <p class="kicker">WE ARE GETTING MARRIED</p>
+
+      <h1 class="film-names">
+        임승택 <em>&amp;</em> 김소미
+      </h1>
+
+      <p class="film-date">19 · DECEMBER · 2026</p>
+      <p class="film-place">JINJU · THE RIUM</p>
+
+      <button class="film-open" id="filmOpen" type="button">
+        OPEN INVITATION
+      </button>
+    </div>
+
+    <!-- 클릭 후 잠깐 나타나는 영화식 엔딩 -->
+    <div class="film-ending" aria-hidden="true">
+      <span class="film-ending-line"></span>
+      <p class="film-ending-eng">OUR STORY BEGINS</p>
+      <p class="film-ending-kor">우리의 이야기가 시작됩니다</p>
+    </div>
+
+    <div class="film-bloom" aria-hidden="true"></div>
+    <div class="film-paper-fade" aria-hidden="true"></div>
+  </div>
+
+  <main class="preview">
+    <img src="./images/SON_3317.jpg" alt="승택과 소미 웨딩사진">
+    <div class="preview-copy">
+      <p>OUR WEDDING DAY</p>
+      <h2>임승택 &amp; 김소미</h2>
+    </div>
+  </main>
+
+  <script>
+    const opening = document.getElementById("opening");
+    const filmOpen = document.getElementById("filmOpen");
+    let started = false;
+
+    function openFilmInvitation() {
+      if (!opening || started) return;
+
+      started = true;
+
+      /*
+        1단계
+        기존 타이틀을 걷어내고
+        OUR STORY BEGINS 엔딩을 보여준다.
+      */
+      opening.classList.add("is-opening");
+
+
+      /*
+        2단계
+        엔딩을 충분히 보여준 뒤
+        아이보리 빛으로 본 청첩장과 연결한다.
+      */
+      setTimeout(() => {
+
+        opening.classList.add("is-closing");
+
+      }, 1450);
+
+
+      /*
+        3단계
+        오프닝 전체를 천천히 투명하게 만들어
+        바로 아래 실제 청첩장이 자연스럽게 보이게 한다.
+      */
+      setTimeout(() => {
+
+        opening.classList.add("is-finished");
+
+      }, 2150);
+
+
+      setTimeout(() => {
+
+        opening.remove();
+
+      }, 3300);
+    }
+
+    filmOpen?.addEventListener("click", openFilmInvitation);
+  </script>
+</body>
+
+</html>
